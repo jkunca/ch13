@@ -14,7 +14,7 @@ const jsonPath = path.join(__dirname, 'paintings.json');
     });
 
     app.get('/start',function(request,response){
-        response.sendFile(__dirname+"/static/tester.html");
+        response.sendFile(__dirname + "/static/tester.html");
     });
     app.get('/',(req,resp)=>{resp.json(paintings)});
 
@@ -26,12 +26,12 @@ const jsonPath = path.join(__dirname, 'paintings.json');
 
     app.get('/gallery/:id',(req,resp) => {
         const galleryid = req.params.id;
-        const matches = paintings.filter(obj => galleryid == obj.galleryID);
+        const matches = paintings.filter(obj => galleryid == obj.gallery.galleryID);
         resp.json(matches);
     });
-    app.get('artist/:id', (req,resp) =>{
+    app.get('/artist/:id', (req,resp) =>{
         const artistid = req.params.id;
-        const matches = paintings.filter(obj=>artistid==obj.artist.artistID);
+        const matches = paintings.filter(obj => artistid == obj.artist.artistID);
         resp.json(matches);
     });
     app.get('/year/:min/:max',(req,resp)=>{
